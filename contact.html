@@ -139,8 +139,7 @@
                         <div class="contact-info bg-white pt-10 pb-10 px-5">
                             <div class="contact-info-title text-center mb-4 px-5">
                                 <h3 class="mb-1">INFORMATION ABOUT US</h3>
-                                <p class="mb-0">Your time is our time.
-We guarantee that we won't waste it.</p>
+                                <p class="mb-0">Your time is our time. We guarantee that we won't waste it.</p>
                             </div>
                             <div class="contact-info-content row mb-1">
                                 <div class="col-lg-4 col-md-6 mb-4">
@@ -179,12 +178,9 @@ We guarantee that we won't waste it.</p>
                                     <h3 class="mb-1">Keep in Touch</h3>
                                     <p class="mb-0">Reach out to us for any inquiries, property viewings, or assistance.</p>
                                 </div>
-                                
-                                <!-- Status Message Container -->
-                                <div id="formspree-status" class="text-center mb-3 fw-bold"></div>
 
-                                <!-- DIRECT AJAX FORMSPREE FORM -->
-                                <form id="fs-custom-form">
+                                <!-- DIRECT NATIVE FORMSPREE FORM -->
+                                <form action="https://formspree.io/f/mzepkeeq" method="POST">
                                     <div class="form-group mb-2">
                                         <input type="text" name="First Name" class="form-control" placeholder="First Name" required>
                                     </div>
@@ -200,8 +196,9 @@ We guarantee that we won't waste it.</p>
                                     <div class="textarea mb-2">
                                         <textarea name="Message" placeholder="Enter a message" required></textarea>
                                     </div>
+
                                     <div class="comment-btn text-center">
-                                        <button type="button" id="fs-submit-btn" class="nir-btn">Send Message</button>
+                                        <button type="submit" class="nir-btn">Send Message</button>
                                     </div>
                                 </form>
                             </div>
@@ -418,56 +415,5 @@ We guarantee that we won't waste it.</p>
     <script src="js/plugin.js"></script>
     <script src="js/main.js"></script>
     <script src="js/custom-nav.js"></script>
-
-    <!-- Formspree Custom AJAX Handling Script -->
-    <script>
-        document.getElementById('fs-submit-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            var form = document.getElementById('fs-custom-form');
-            var status = document.getElementById('formspree-status');
-            var btn = document.getElementById('fs-submit-btn');
-
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            var formData = new FormData(form);
-            btn.disabled = true;
-            btn.innerText = 'Sending...';
-            status.style.color = '#555';
-            status.innerHTML = 'Sending your message...';
-
-            fetch('https://formspree.io/f/mzepkeeq', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(function(response) {
-                if (response.ok) {
-                    status.style.color = 'green';
-                    status.innerHTML = 'Thank you! Your message has been sent successfully.';
-                    form.reset();
-                } else {
-                    response.json().then(function(data) {
-                        status.style.color = 'red';
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(function(error){ return error["message"] }).join(", ");
-                        } else {
-                            status.innerHTML = 'Oops! There was a problem submitting your form';
-                        }
-                    });
-                }
-            }).catch(function(error) {
-                status.style.color = 'red';
-                status.innerHTML = 'Oops! There was a problem submitting your form';
-            }).finally(function() {
-                btn.disabled = false;
-                btn.innerText = 'Send Message';
-            });
-        });
-    </script>
 </body>
 </html>
