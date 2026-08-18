@@ -179,22 +179,28 @@
                                     <p class="mb-0">Reach out to us for any inquiries, property viewings, or assistance.</p>
                                 </div>
 
-                                <!-- DIRECT NATIVE FORMSPREE FORM -->
-                                <form action="https://formspree.io/f/mzepkeeq" method="POST">
+                                <!-- CONTACT FORM -->
+                                <form action="send-mail.php" method="POST" id="contactForm">
                                     <div class="form-group mb-2">
-                                        <input type="text" name="First Name" class="form-control" placeholder="First Name" required>
+                                        <input type="text" name="first_name" class="form-control" placeholder="First Name" maxlength="80" autocomplete="given-name" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="text" name="Last Name" class="form-control" placeholder="Last Name" required>
+                                        <input type="text" name="last_name" class="form-control" placeholder="Last Name" maxlength="80" autocomplete="family-name" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="email" name="Email" class="form-control" placeholder="Email" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" maxlength="150" autocomplete="email" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="tel" name="Phone" class="form-control" placeholder="Phone">
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone" maxlength="40" autocomplete="tel">
                                     </div>
                                     <div class="textarea mb-2">
-                                        <textarea name="Message" placeholder="Enter a message" required></textarea>
+                                        <textarea name="message" placeholder="Enter a message" maxlength="5000" required></textarea>
+                                    </div>
+
+                                    <!-- Spam protection: real visitors leave this field empty -->
+                                    <div style="display:none !important;" aria-hidden="true">
+                                        <label for="website">Website</label>
+                                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                                     </div>
 
                                     <div class="comment-btn text-center">
@@ -415,5 +421,23 @@
     <script src="js/plugin.js"></script>
     <script src="js/main.js"></script>
     <script src="js/custom-nav.js"></script>
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var status = params.get('status');
+
+            if (status === 'success') {
+                alert('Thank you! Your message has been sent successfully.');
+                if (window.history.replaceState) {
+                    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+                }
+            } else if (status === 'error') {
+                alert('Sorry, your message could not be sent. Please try again or contact us directly.');
+                if (window.history.replaceState) {
+                    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
