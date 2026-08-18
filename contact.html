@@ -63,8 +63,6 @@
                                 </li>
                                 <li><a href="about.html">About Us</a></li>
 
-                                    
-
                                 <li class="submenu dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">Blog <i class="icon-arrow-down"
@@ -182,27 +180,28 @@ We guarantee that we won't waste it.</p>
                                     <p class="mb-0">Reach out to us for any inquiries, property viewings, or assistance.</p>
                                 </div>
                                 
-                                <div id="contactform-error-msg"></div>
+                                <!-- Status Message Container -->
+                                <div id="formspree-status" class="text-center mb-3 fw-bold"></div>
 
-                                <!-- FORMSPREE INTEGRATED FORM -->
-                                <form action="https://formspree.io/f/mzepkeeq" method="POST" name="contactform_formspree" id="contactform_formspree">
+                                <!-- DIRECT AJAX FORMSPREE FORM -->
+                                <form id="fs-custom-form">
                                     <div class="form-group mb-2">
-                                        <input type="text" name="First Name" class="form-control" id="fullname" placeholder="First Name" required>
+                                        <input type="text" name="First Name" class="form-control" placeholder="First Name" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="text" name="Last Name" class="form-control" id="llastname" placeholder="Last Name" required>
+                                        <input type="text" name="Last Name" class="form-control" placeholder="Last Name" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="email" name="Email" class="form-control" id="email" placeholder="Email" required>
+                                        <input type="email" name="Email" class="form-control" placeholder="Email" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="tel" name="Phone" class="form-control" id="phnumber" placeholder="Phone">
+                                        <input type="tel" name="Phone" class="form-control" placeholder="Phone">
                                     </div>
                                     <div class="textarea mb-2">
                                         <textarea name="Message" placeholder="Enter a message" required></textarea>
                                     </div>
                                     <div class="comment-btn text-center">
-                                        <input type="submit" class="nir-btn" id="submit2" value="Send Message">
+                                        <button type="button" id="fs-submit-btn" class="nir-btn">Send Message</button>
                                     </div>
                                 </form>
                             </div>
@@ -379,113 +378,6 @@ We guarantee that we won't waste it.</p>
         </form>
     </div>
 
-    <!-- login registration modal -->
-    <div class="modal fade log-reg" id="exampleModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="post-tabs">
-                <!-- tab navs -->
-                <ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button aria-controls="login" aria-selected="false" class="nav-link active" data-bs-target="#login" data-bs-toggle="tab" id="login-tab" role="tab" type="button">Login</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button aria-controls="register" aria-selected="true" class="nav-link" data-bs-target="#register" data-bs-toggle="tab" id="register-tab" role="tab" type="button">Register</button>
-                    </li>
-                </ul>
-                <!-- tab contents -->
-                <div class="tab-content blog-full" id="postsTabContent">
-                    <!-- popular posts -->
-                    <div aria-labelledby="login-tab" class="tab-pane fade active show" id="login" role="tabpanel">
-                        <div class="row">
-                            <div class="col-lg-6">
-                               <div class="blog-image">
-                                    <a href="#" style="background-image: url(images/trending/trending5.jpg);"></a>
-                                </div> 
-                            </div>
-                            <div class="col-lg-6">
-                                <h4 class="text-center border-b pb-2">Login</h4>
-                                <div class="log-reg-button d-flex align-items-center justify-content-between">
-                                    <button type="submit" class="btn btn-fb">
-                                        <i class="fab fa-facebook"></i> Login with Facebook
-                                    </button>
-                                    <button type="submit" class="btn btn-google">
-                                        <i class="fab fa-google"></i> Login with Google
-                                    </button>
-                                </div>
-                                <hr class="log-reg-hr position-relative my-4 overflow-visible">
-                                <form method="post" action="#" name="contactform" id="contactform">
-                                    <div class="form-group mb-2">
-                                        <input type="text" name="user_name" class="form-control" id="fname" placeholder="User Name or Email Address">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="password" name="password_name" class="form-control" id="lpass" placeholder="Password">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="checkbox" class="custom-control-input" id="exampleCheck">
-                                        <label class="custom-control-label mb-0" for="exampleCheck">Remember me</label>
-                                        <a class="float-end" href="#">Lost your password?</a>
-                                    </div>
-                                    <div class="comment-btn mb-2 pb-2 text-center border-b">
-                                        <input type="submit" class="nir-btn w-100" id="submit" value="Login">
-                                    </div>
-                                    <p class="text-center">Don't have an account? <a href="#" class="theme">Register</a></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Recent posts -->
-                    <div aria-labelledby="register-tab" class="tab-pane fade" id="register" role="tabpanel">
-                        <div class="row">
-                            <div class="col-lg-6">
-                               <div class="blog-image">
-                                    <a href="#" style="background-image: url(images/trending/trending5.jpg);"></a>
-                                </div> 
-                            </div>
-                            <div class="col-lg-6">
-                                <h4 class="text-center border-b pb-2">Register</h4>
-                                <div class="log-reg-button d-flex align-items-center justify-content-between">
-                                    <button type="submit" class="btn btn-fb">
-                                        <i class="fab fa-facebook"></i> Login with Facebook
-                                    </button>
-                                    <button type="submit" class="btn btn-google">
-                                        <i class="fab fa-google"></i> Login with Google
-                                    </button>
-                                </div>
-                                <hr class="log-reg-hr position-relative my-4 overflow-visible">
-                                <form method="post" action="#" name="contactform1" id="contactform1">
-                                    <div class="form-group mb-2">
-                                        <input type="text" name="user_name" class="form-control" id="fname1" placeholder="User Name">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="text" name="user_name" class="form-control" id="femail" placeholder="Email Address">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="password" name="password_name" class="form-control" id="lpass1" placeholder="Password">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="password" name="password_name" class="form-control" id="lrepass" placeholder="Re-enter Password">
-                                    </div>
-                                    <div class="form-group mb-2 d-flex">
-                                        <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                        <label class="custom-control-label mb-0 ms-1 lh-1" for="exampleCheck1">I have read and accept the Terms and Privacy Policy?</label>
-                                    </div>
-                                    <div class="comment-btn mb-2 pb-2 text-center border-b">
-                                        <input type="submit" class="nir-btn w-100" id="submit1" value="Register">
-                                    </div>
-                                    <p class="text-center">Already have an account? <a href="#" class="theme">Login</a></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- header side menu --> 
     <div class="header_sidemenu">
         <div class="header_sidemenu_in">
@@ -526,5 +418,56 @@ We guarantee that we won't waste it.</p>
     <script src="js/plugin.js"></script>
     <script src="js/main.js"></script>
     <script src="js/custom-nav.js"></script>
+
+    <!-- Formspree Custom AJAX Handling Script -->
+    <script>
+        document.getElementById('fs-submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            var form = document.getElementById('fs-custom-form');
+            var status = document.getElementById('formspree-status');
+            var btn = document.getElementById('fs-submit-btn');
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            var formData = new FormData(form);
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+            status.style.color = '#555';
+            status.innerHTML = 'Sending your message...';
+
+            fetch('https://formspree.io/f/mzepkeeq', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function(response) {
+                if (response.ok) {
+                    status.style.color = 'green';
+                    status.innerHTML = 'Thank you! Your message has been sent successfully.';
+                    form.reset();
+                } else {
+                    response.json().then(function(data) {
+                        status.style.color = 'red';
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(function(error){ return error["message"] }).join(", ");
+                        } else {
+                            status.innerHTML = 'Oops! There was a problem submitting your form';
+                        }
+                    });
+                }
+            }).catch(function(error) {
+                status.style.color = 'red';
+                status.innerHTML = 'Oops! There was a problem submitting your form';
+            }).finally(function() {
+                btn.disabled = false;
+                btn.innerText = 'Send Message';
+            });
+        });
+    </script>
 </body>
 </html>
