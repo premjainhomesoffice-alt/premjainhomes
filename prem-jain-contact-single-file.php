@@ -1,3 +1,201 @@
+<?php
+/* =========================================================
+   PREM JAIN HOMES - SINGLE FILE CONTACT FORM
+   Save this file as: contact.php
+   ========================================================= */
+
+// -------------------------
+// Gmail SMTP configuration
+// -------------------------
+const CONTACT_TO_EMAIL = 'premjainhomesoffice@gmail.com';
+const GMAIL_SMTP_USER   = 'premjainhomesoffice@gmail.com';
+
+// IMPORTANT:
+// Paste the 16-character Google App Password below (remove spaces).
+// Do NOT use your normal Gmail password.
+const GMAIL_APP_PASSWORD = 'PASTE_16_CHARACTER_APP_PASSWORD_HERE';
+
+$form_status = '';
+$form_message = '';
+
+function clean_header_value($value) {
+    return trim(str_replace(["\r", "\n"], '', (string)$value));
+}
+
+function smtp_read_response($socket) {
+    $response = '';
+    while (($line = fgets($socket, 515)) !== false) {
+        $response .= $line;
+        // SMTP multiline response ends when the 4th char is a space.
+        if (strlen($line) >= 4 && $line[3] === ' ') {
+            break;
+        }
+    }
+    return $response;
+}
+
+function smtp_expect($socket, $expectedCodes) {
+    $response = smtp_read_response($socket);
+    $code = (int)substr($response, 0, 3);
+    if (!in_array($code, (array)$expectedCodes, true)) {
+        throw new Exception('SMTP error: ' . trim($response));
+    }
+    return $response;
+}
+
+function smtp_command($socket, $command, $expectedCodes) {
+    fwrite($socket, $command . "\r\n");
+    return smtp_expect($socket, $expectedCodes);
+}
+
+function send_with_gmail_smtp($firstName, $lastName, $visitorEmail, $phone, $visitorMessage) {
+    $smtpUser = GMAIL_SMTP_USER;
+    $smtpPass = str_replace(' ', '', GMAIL_APP_PASSWORD);
+    $to       = CONTACT_TO_EMAIL;
+
+    if ($smtpPass === '' || $smtpPass === 'PASTE_16_CHARACTER_APP_PASSWORD_HERE') {
+        throw new Exception('Gmail App Password is not configured.');
+    }
+
+    $errno = 0;
+    $errstr = '';
+    $useStartTls = false;
+
+    // First try Gmail SMTP over implicit SSL (port 465).
+    $socket = @stream_socket_client(
+        'ssl://smtp.gmail.com:465',
+        $errno,
+        $errstr,
+        20,
+        STREAM_CLIENT_CONNECT
+    );
+
+    // If port 465 is blocked by the host, fall back to port 587 + STARTTLS.
+    if (!$socket) {
+        $errno = 0;
+        $errstr = '';
+        $socket = @stream_socket_client(
+            'tcp://smtp.gmail.com:587',
+            $errno,
+            $errstr,
+            20,
+            STREAM_CLIENT_CONNECT
+        );
+        $useStartTls = true;
+    }
+
+    if (!$socket) {
+        throw new Exception('Could not connect to Gmail SMTP: ' . $errstr);
+    }
+
+    stream_set_timeout($socket, 20);
+
+    try {
+        smtp_expect($socket, [220]);
+        smtp_command($socket, 'EHLO ' . ($_SERVER['SERVER_NAME'] ?? 'premjainhomes.com'), [250]);
+
+        if ($useStartTls) {
+            smtp_command($socket, 'STARTTLS', [220]);
+            $cryptoOk = @stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+            if ($cryptoOk !== true) {
+                throw new Exception('Could not enable TLS encryption for Gmail SMTP.');
+            }
+            smtp_command($socket, 'EHLO ' . ($_SERVER['SERVER_NAME'] ?? 'premjainhomes.com'), [250]);
+        }
+
+        smtp_command($socket, 'AUTH LOGIN', [334]);
+        smtp_command($socket, base64_encode($smtpUser), [334]);
+        smtp_command($socket, base64_encode($smtpPass), [235]);
+        smtp_command($socket, 'MAIL FROM:<' . $smtpUser . '>', [250]);
+        smtp_command($socket, 'RCPT TO:<' . $to . '>', [250, 251]);
+        smtp_command($socket, 'DATA', [354]);
+
+        $safeFirst = clean_header_value($firstName);
+        $safeLast  = clean_header_value($lastName);
+        $safeEmail = clean_header_value($visitorEmail);
+        $safePhone = trim($phone);
+        $fullName  = trim($safeFirst . ' ' . $safeLast);
+
+        $subject = 'New Website Inquiry - ' . ($fullName !== '' ? $fullName : 'Prem Jain Homes');
+
+        $body  = "New inquiry received from Prem Jain Homes website.\r\n\r\n";
+        $body .= "First Name: " . $safeFirst . "\r\n";
+        $body .= "Last Name: " . $safeLast . "\r\n";
+        $body .= "Email: " . $safeEmail . "\r\n";
+        $body .= "Phone: " . ($safePhone !== '' ? $safePhone : 'Not provided') . "\r\n\r\n";
+        $body .= "Message:\r\n" . trim($visitorMessage) . "\r\n\r\n";
+        $body .= "Submitted: " . date('Y-m-d H:i:s') . "\r\n";
+        $body .= "IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . "\r\n";
+
+        $headers = [
+            'From: Prem Jain Homes Website <' . $smtpUser . '>',
+            'Reply-To: ' . $fullName . ' <' . $safeEmail . '>',
+            'To: Prem Jain Homes <' . $to . '>',
+            'Subject: ' . $subject,
+            'Date: ' . date(DATE_RFC2822),
+            'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . ($_SERVER['SERVER_NAME'] ?? 'premjainhomes.com') . '>',
+            'MIME-Version: 1.0',
+            'Content-Type: text/plain; charset=UTF-8',
+            'Content-Transfer-Encoding: 8bit'
+        ];
+
+        $data = implode("\r\n", $headers) . "\r\n\r\n" . $body;
+
+        // SMTP dot-stuffing.
+        $data = preg_replace('/(?m)^\./', '..', $data);
+        fwrite($socket, $data . "\r\n.\r\n");
+        smtp_expect($socket, [250]);
+        smtp_command($socket, 'QUIT', [221]);
+
+        fclose($socket);
+        return true;
+    } catch (Throwable $e) {
+        if (is_resource($socket)) {
+            fclose($socket);
+        }
+        throw $e;
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
+    $firstName = trim($_POST['first_name'] ?? '');
+    $lastName  = trim($_POST['last_name'] ?? '');
+    $email     = trim($_POST['email'] ?? '');
+    $phone     = trim($_POST['phone'] ?? '');
+    $message   = trim($_POST['message'] ?? '');
+    $website   = trim($_POST['website'] ?? ''); // Honeypot
+
+    if ($website !== '') {
+        // Silently treat bot submissions as successful.
+        header('Location: contact.php?sent=1#contact-form1');
+        exit;
+    }
+
+    if ($firstName === '' || $lastName === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $form_status = 'error';
+        $form_message = 'Please complete all required fields and enter a valid email address.';
+    } elseif (strlen($firstName) > 80 || strlen($lastName) > 80 || strlen($email) > 150 || strlen($phone) > 40 || strlen($message) > 5000) {
+        $form_status = 'error';
+        $form_message = 'One or more fields are too long. Please shorten your entry and try again.';
+    } else {
+        try {
+            send_with_gmail_smtp($firstName, $lastName, $email, $phone, $message);
+            header('Location: contact.php?sent=1#contact-form1');
+            exit;
+        } catch (Throwable $e) {
+            // Keep detailed server error out of the public page.
+            error_log('Prem Jain Homes contact form error: ' . $e->getMessage());
+            $form_status = 'error';
+            $form_message = 'Your message could not be sent right now. Please try again or contact us directly at premjainhomesoffice@gmail.com.';
+        }
+    }
+}
+
+if (isset($_GET['sent']) && $_GET['sent'] === '1') {
+    $form_status = 'success';
+    $form_message = 'Thank you! Your message has been submitted successfully. We have received your inquiry and will get back to you soon.';
+}
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 
@@ -22,6 +220,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
     <link rel="stylesheet" href="fonts/line-icons.css" type="text/css">
+    <style>
+        .form-submit-note {
+            padding: 18px 20px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+        .form-submit-note i {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        .form-submit-success {
+            background: #eef9f1;
+            border-color: #b9dfc2;
+            color: #245c32;
+        }
+        .form-submit-error {
+            background: #fff1f1;
+            border-color: #efc2c2;
+            color: #8a2525;
+        }
+    </style>
 </head>
 <body>
 
@@ -100,7 +319,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="active"><a href="contact.html">Contact Us</a></li>
+                                <li class="active"><a href="contact.php">Contact Us</a></li>
                                 <li class="search-main"><a href="#search1" class="mt_search"><i
                                             class="fa fa-search"></i></a></li>
                             </ul>
@@ -179,32 +398,48 @@
                                     <p class="mb-0">Reach out to us for any inquiries, property viewings, or assistance.</p>
                                 </div>
 
-                                <!-- CONTACT FORM -->
-                                <form action="send-mail.php" method="POST" id="contactForm">
+                                <?php if ($form_status === 'success'): ?>
+                                    <div class="form-submit-note form-submit-success text-center mb-4" role="status">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        <h4 class="mb-1">Message Sent Successfully</h4>
+                                        <p class="mb-0"><?php echo htmlspecialchars($form_message, ENT_QUOTES, 'UTF-8'); ?></p>
+                                    </div>
+                                <?php elseif ($form_status === 'error'): ?>
+                                    <div class="form-submit-note form-submit-error text-center mb-4" role="alert">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                        <h4 class="mb-1">Message Not Sent</h4>
+                                        <p class="mb-0"><?php echo htmlspecialchars($form_message, ENT_QUOTES, 'UTF-8'); ?></p>
+                                    </div>
+                                <?php endif; ?>
+
+                                <!-- CONTACT FORM: handled by this same PHP file -->
+                                <form action="contact.php#contact-form1" method="POST" id="contactForm">
+                                    <input type="hidden" name="contact_form" value="1">
+
                                     <div class="form-group mb-2">
-                                        <input type="text" name="first_name" class="form-control" placeholder="First Name" maxlength="80" autocomplete="given-name" required>
+                                        <input type="text" name="first_name" class="form-control" placeholder="First Name" maxlength="80" autocomplete="given-name" value="<?php echo $form_status === 'error' ? htmlspecialchars($_POST['first_name'] ?? '', ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="text" name="last_name" class="form-control" placeholder="Last Name" maxlength="80" autocomplete="family-name" required>
+                                        <input type="text" name="last_name" class="form-control" placeholder="Last Name" maxlength="80" autocomplete="family-name" value="<?php echo $form_status === 'error' ? htmlspecialchars($_POST['last_name'] ?? '', ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" maxlength="150" autocomplete="email" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" maxlength="150" autocomplete="email" value="<?php echo $form_status === 'error' ? htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <input type="tel" name="phone" class="form-control" placeholder="Phone" maxlength="40" autocomplete="tel">
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone" maxlength="40" autocomplete="tel" value="<?php echo $form_status === 'error' ? htmlspecialchars($_POST['phone'] ?? '', ENT_QUOTES, 'UTF-8') : ''; ?>">
                                     </div>
                                     <div class="textarea mb-2">
-                                        <textarea name="message" placeholder="Enter a message" maxlength="5000" required></textarea>
+                                        <textarea name="message" placeholder="Enter a message" maxlength="5000" required><?php echo $form_status === 'error' ? htmlspecialchars($_POST['message'] ?? '', ENT_QUOTES, 'UTF-8') : ''; ?></textarea>
                                     </div>
 
                                     <!-- Spam protection: real visitors leave this field empty -->
-                                    <div style="display:none !important;" aria-hidden="true">
+                                    <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
                                         <label for="website">Website</label>
                                         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                                     </div>
 
                                     <div class="comment-btn text-center">
-                                        <button type="submit" class="nir-btn">Send Message</button>
+                                        <button type="submit" class="nir-btn" id="contactSubmitBtn">Send Message</button>
                                     </div>
                                 </form>
                             </div>
@@ -272,7 +507,7 @@
                                 <li><a href="about.html">About Us</a></li>
                                 <li><a href="listing-fullwidth.html">Active Listings</a></li>
                                 <li><a href="buyers-guide.html">Buyer's Guide</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="contact.php">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -397,7 +632,7 @@
                         <div class="content-box mb-5">
                             <h3 class="">Get In Touch</h3>
                             <p class="mb-2">Your trusted real estate partner, helping you find, buy, and invest in the perfect property with confidence.</p>
-                            <a href="contact.html" class="nir-btn">Consultation</a>
+                            <a href="contact.php" class="nir-btn">Consultation</a>
                         </div>
 
                         <div class="contact-info1">
@@ -423,19 +658,13 @@
     <script src="js/custom-nav.js"></script>
     <script>
         (function () {
-            var params = new URLSearchParams(window.location.search);
-            var status = params.get('status');
-
-            if (status === 'success') {
-                alert('Thank you! Your message has been sent successfully.');
-                if (window.history.replaceState) {
-                    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-                }
-            } else if (status === 'error') {
-                alert('Sorry, your message could not be sent. Please try again or contact us directly.');
-                if (window.history.replaceState) {
-                    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-                }
+            var form = document.getElementById('contactForm');
+            var btn = document.getElementById('contactSubmitBtn');
+            if (form && btn) {
+                form.addEventListener('submit', function () {
+                    btn.disabled = true;
+                    btn.innerHTML = 'Sending...';
+                });
             }
         })();
     </script>
