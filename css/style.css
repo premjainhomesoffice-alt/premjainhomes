@@ -5956,4 +5956,21 @@ body .slicknav_nav a:hover {
   word-break: break-word;
 }
 
+/* body alone had overflow-x:hidden, but a fraction-of-a-pixel overflow from
+   the slider tracks still showed a horizontal scrollbar at the html/viewport
+   level (body's overflow-x doesn't clip that). */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* The fixed #back-to-top button (bottom:20px, right:20px, 40x40) sits on top
+   of the last footer social icon on narrow screens since it's the last thing
+   in normal document flow at that corner. Give the row breathing room. */
+@media (max-width: 767px) {
+  .footer-copyright .social-icons {
+    padding-right: 55px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

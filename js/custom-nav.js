@@ -11,10 +11,19 @@
             // transform animation here fought with that transition on the
             // same element and made the header appear to slide the wrong way.
             var scrollValue = $(window).scrollTop();
+            var $header = $('.header_menu');
             if (scrollValue > 70) {
-                $('.header_menu').addClass('fixed-top');
+                if (!$header.hasClass('fixed-top')) {
+                    // The header switches from static to position:fixed here,
+                    // so it drops out of the document flow. Without this, the
+                    // content that used to be below it jumps up by the
+                    // header's height and ends up hidden underneath it.
+                    $('body').css('padding-top', $header.outerHeight());
+                }
+                $header.addClass('fixed-top');
             } else {
-                $('.header_menu').removeClass('fixed-top');
+                $header.removeClass('fixed-top');
+                $('body').css('padding-top', '');
             }
             ticking = false;
         });
