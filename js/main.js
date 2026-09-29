@@ -75,12 +75,22 @@
          }, '500');
          return false;
      });
+     var backToTopVisible = false;
+     var backToTopTicking = false;
      $(window).on('scroll', () => {
-         if ($(window).scrollTop() > 500) {
-             $('#back-to-top').fadeIn(200);
-         } else {
-             $('#back-to-top').fadeOut(200);
-         }
+         if (backToTopTicking) return;
+         backToTopTicking = true;
+         window.requestAnimationFrame(() => {
+             var shouldShow = $(window).scrollTop() > 500;
+             if (shouldShow && !backToTopVisible) {
+                 $('#back-to-top').fadeIn(200);
+                 backToTopVisible = true;
+             } else if (!shouldShow && backToTopVisible) {
+                 $('#back-to-top').fadeOut(200);
+                 backToTopVisible = false;
+             }
+             backToTopTicking = false;
+         });
      });
 
      // Slick SLider
@@ -371,27 +381,11 @@
      });
 
 
-     $("#contactform2").validate({      
-      submitHandler: function() {
-        
-        $.ajax({
-          url : 'mail/contact.php',
-          type : 'POST',
-          data : {
-            fname : $('input[name="first_name"]').val(),
-            lname : $('input[name="last_name"]').val(),
-            email : $('input[name="email"]').val(),
-            phone : $('input[name="phone"]').val(),
-            comments : $('textarea[name="comments"]').val(),
-          },
-          success : function( result ){
-            $('#contactform-error-msg').html( result );
-            $("#contactform2")[0].reset();
-          }     
-        });
-
-      }
-    });
+    // Note: #contactform2 submission is handled by the EmailJS script in
+    // contact.html. The old jQuery-validate + mail/contact.php path was
+    // removed because it double-submitted the form to a broken, unused
+    // ThemeForest demo script (undefined $name, hardcoded demo recipient
+    // email, and a PHP 8-incompatible get_magic_quotes_gpc() call).
 
     // burgermenu
 

@@ -1,11 +1,25 @@
-$(window).on('scroll', function(event) {
-    var scrollValue = $(window).scrollTop();
-    if (scrollValue > 70) {
-         $('.header_menu').addClass('fixed-top animated slideInDown');
-    } else{
-      $('.header_menu').removeClass('fixed-top animated slideInDown');
-    } 
-});
+(function() {
+    var ticking = false;
+    $(window).on('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function() {
+            // Only toggle .fixed-top here (solid background once scrolled).
+            // The show/hide-on-scroll-direction animation lower in this file
+            // already handles sliding the header in and out via `top`, using
+            // a CSS transition. Also adding the animate.css "slideInDown"
+            // transform animation here fought with that transition on the
+            // same element and made the header appear to slide the wrong way.
+            var scrollValue = $(window).scrollTop();
+            if (scrollValue > 70) {
+                $('.header_menu').addClass('fixed-top');
+            } else {
+                $('.header_menu').removeClass('fixed-top');
+            }
+            ticking = false;
+        });
+    });
+})();
 
 
   
@@ -33,31 +47,68 @@ jQuery(document).ready(function () {
 
     var $slicknav_label;
     $('#responsive-menu').slicknav({
-      duration: 500,
-      easingOpen: 'easeInExpo',
-      easingClose: 'easeOutExpo',
+      duration: 0,
       closedSymbol: '<i class="fa fa-plus"></i>',
       openedSymbol: '<i class="fa fa-minus"></i>',
       prependTo: '#slicknav-mobile',
       allowParentLinks: true,
-      label:"" 
+      label:""
     });
 
-    
+    // Slide-in drawer for the mobile nav, instead of the default dropdown
+    // "popup" under the header. Duration is 0 above so slicknav shows/hides
+    // instantly (just toggling its .slicknav_hidden class); the actual
+    // sliding motion is done in CSS via a transform transition on
+    // .slicknav_nav, keyed off that same class.
+    var $mobileNavOverlay = $('<div class="mobile-nav-overlay"></div>').appendTo('body');
+
+    // The header (.main_header_area) has its own z-index:999 stacking
+    // context, and .slicknav_nav was nested inside it, so its z-index:2000
+    // was only ever compared against siblings *inside* that context — the
+    // body-level overlay (z-index 1999) still composited above the whole
+    // header stack and visually greyed out the drawer. Moving the drawer
+    // panel to be a direct child of <body>, alongside the overlay, fixes
+    // the stacking so the drawer's own z-index is finally compared at the
+    // right level and renders above the overlay as solid white.
+    $('.slicknav_nav').appendTo('body');
+
+    function closeMobileNav() {
+      $('.slicknav_btn.slicknav_open').trigger('click');
+    }
+
+    $(document).on('click', '.slicknav_btn', function() {
+      setTimeout(function() {
+        $mobileNavOverlay.toggleClass('show', $('.slicknav_btn').hasClass('slicknav_open'));
+      }, 0);
+    });
+
+    $mobileNavOverlay.on('click', closeMobileNav);
+
+    if (!$('.slicknav_nav .slicknav_close-btn').length) {
+      $('.slicknav_nav').prepend('<div class="slicknav_close-btn"><i class="fa fa-times"></i></div>');
+    }
+    if (!$('.slicknav_nav .slicknav_drawer-logo').length) {
+      $('.slicknav_nav').prepend('<div class="slicknav_drawer-logo"><img src="images/logo.png" alt="Prem Jain Homes"></div>');
+    }
+    $(document).on('click', '.slicknav_close-btn', closeMobileNav);
+
+
     /**
      * Sticky Header
      */
         
+    var stickyTicking = false;
     $(window).scroll(function(){
-
-      if( $(window).scrollTop() > 10 ){
-
-        $('.navbar').addClass('navbar-sticky-in')
-
-      } else {
-        $('.navbar').removeClass('navbar-sticky-in')
-      }
-
+      if (stickyTicking) return;
+      stickyTicking = true;
+      window.requestAnimationFrame(function() {
+        if ($(window).scrollTop() > 10) {
+          $('.navbar').addClass('navbar-sticky-in')
+        } else {
+          $('.navbar').removeClass('navbar-sticky-in')
+        }
+        stickyTicking = false;
+      });
     })
     
     /**
@@ -156,7 +207,15 @@ jQuery(document).ready(function () {
         return toggled;
     };
 
-    window.addEventListener('scroll', checkScroll);
+    var directionTicking = false;
+    window.addEventListener('scroll', function() {
+        if (directionTicking) return;
+        directionTicking = true;
+        window.requestAnimationFrame(function() {
+            checkScroll();
+            directionTicking = false;
+        });
+    }, { passive: true });
 
 })();
 
