@@ -28,121 +28,71 @@
 <body>
 
     <!-- Preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div id="status"></div>
-    </div>
+    </div> -->
     <!-- Preloader Ends -->
 
      <!-- header starts -->
-    <header class="main_header_area">
-        <!-- Navigation Bar -->
-        <div class="header_menu" id="header_menu">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-flex d-flex align-items-center justify-content-between w-100 pb-3 pt-3">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="index.html">
-                                <img src="images/Prem jain-logos-navbar.webp" alt="image"
-                                    style="width: 240px; height: auto;">
-                            </a>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" id="responsive-menu">
-                                <li class="dropdown submenu active">
-                                    <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <!-- <ul class="dropdown-menu">
-                                        <li><a href="index.html">Homepage Default</a></li>
-                                        <li><a href="index-1.html">Homepage 1</a></li>
-                            
-                                        <li><a href="index-3.html">Homepage 3</a></li>
-                                        <li><a href="index-4.html">Homepage 4</a></li>
-                                    </ul> -->
-                                </li>
-                                <li class="submenu dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Properties</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="all-listing.html">Active Listings</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="submenu dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Buying</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="buyers-guide.html">Buyer's Guide</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About Us</a></li>
-
-                                    
-
-                                <li class="submenu dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Blog <i class="icon-arrow-down"
-                                            aria-hidden="true"></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="submenu dropdown">
-                                            <a href="blogs.html" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-haspopup="true" aria-expanded="false">Blogs<i
-                                                    class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                            <!-- <ul class="dropdown-menu">
-                                                <li><a href="post-grid-1.html">Blog Grid 1</a></li>
-                                                <li><a href="post-grid-2.html">Blog Grid 2</a></li>
-                                                <li><a href="post-grid-3.html">Blog Grid 3</a></li>
-                                            </ul> -->
-                                        </li>
-                                        <!-- <li class="submenu dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-haspopup="true" aria-expanded="false">Blog List<i
-                                                    class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="post-list-1.html">Blog List 1</a></li>
-                                                <li><a href="post-list-2.html">Blog List 2</a></li>
-                                                <li><a href="post-list-3.html">Blog List 3</a></li>
-                                            </ul>
-                                        </li> -->
-                                        <!-- <li class="submenu dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-haspopup="true" aria-expanded="false">Blog Single<i
-                                                    class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="detail-1.html">Blog Single 1</a></li>
-                                                <li><a href="detail-2.html">Blog Single 2</a></li>
-                                                <li><a href="detail-3.html">Blog Single 3</a></li>
-                                            </ul>
-                                        </li> -->
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                                <li class="search-main"><a href="#search1" class="mt_search"><i
-                                            class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                        <div class="register-login d-flex align-items-center">
-                            <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="me-2">
-                                <i class="fa fa-user"></i> Login/Register
-                            </a> -->
-                            <div class="header_sidemenu me-3">
-                                <div class="mhead">
-                                    <span class="menu-ham">
-                                        <a href="#" class="cart-icon d-flex align-items-center ms-1"><i
-                                                class="fa fa-th-large fs-5 black bg-grey p-2"></i></a>
-                                    </span>
-                                </div>
+    <header class="main_header_area" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 999; background: transparent;">
+    <!-- Navigation Bar -->
+    <div class="header_menu" id="header_menu">
+        <nav class="navbar navbar-default" style="background: transparent; border: none; box-shadow: none;">
+            <div class="container">
+                <div class="navbar-flex d-flex align-items-center justify-content-between w-100 pb-3 pt-3">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="images/Prem jain-logos-navbar.webp" alt="image" style="width: 240px; height: auto;">
+                        </a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav" id="responsive-menu">
+                            <li class="dropdown submenu active">
+                                <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                            </li>
+                            <li class="submenu dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Properties</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="all-listing.html">Active Listings</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Buying</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="buyers-guide.html">Buyer's Guide</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li class="submenu dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <i class="icon-arrow-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="submenu dropdown">
+                                        <a href="blogs.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blogs<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li class="search-main"><a href="#search1" class="mt_search"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                    <div class="register-login d-flex align-items-center">
+                        <div class="header_sidemenu me-3">
+                            <div class="mhead">
+                                <span class="menu-ham">
+                                    <a href="#" class="cart-icon d-flex align-items-center ms-1"><i class="fa fa-th-large fs-5 black bg-grey p-2"></i></a>
+                                </span>
                             </div>
                         </div>
-
-                        <div id="slicknav-mobile"></div>
                     </div>
-                </div><!-- /.container-fluid -->
-            </nav>
-        </div>
-        <!-- Navigation Bar Ends -->
-    </header>
+                    <div id="slicknav-mobile"></div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- Navigation Bar Ends -->
+</header>
     <!-- header ends -->
 
     <!-- banner starts -->
@@ -157,19 +107,50 @@
                 <div class="overlay"></div>
             </div>
             <div class="banner-content">
+                <!-- HERO-REDESIGN-START: easy to remove, delete down to matching HERO-REDESIGN-END -->
+                <div class="hero-eyebrow">LUXURY <span>|</span> COMFORT <span>|</span> TRUST</div>
+                <!-- HERO-REDESIGN-END -->
+
                 <div class="entry-meta mb-0">
-                    <span class="entry-category"><a href="listing-leftfilter.html" class="white"
+                    <span class="entry-category"><a href="all-listing.html" class="white"
                             style="font-size: 30px;"> Finance The Lifestyle</a></span>
                 </div>
-                <h1 class="mb-0"><a href="detail-leftside.html" style="color: #dbba77;">Live the Dream</a></h1>
+                <h1 class="mb-0"><a href="blogs.html" style="color: #dbba77;">Live the Dream</a></h1>
+
+                <!-- HERO-REDESIGN-START -->
+                <p class="hero-subtext">Premium homes, smart investments and a better tomorrow — all in one place.</p>
+                <!-- HERO-REDESIGN-END -->
+
+                <!-- HERO-CTA-START: easy to remove, just delete this block down to HERO-CTA-END -->
+                <div id="hero-cta-block" class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                    <a href="all-listing.html" class="nir-btn">View Listings <i class="fa fa-arrow-right ms-2"></i></a>
+                    <a href="contact.html" class="nir-btn-black">Book A Consultation</a>
+                </div>
+                <!-- HERO-CTA-END -->
+
+                <!-- HERO-REDESIGN-START -->
+                <div class="hero-features-row">
+                    <div class="hero-feature"><i class="fa fa-home"></i><span>Premium<br>Properties</span></div>
+                    <div class="hero-feature"><i class="fa fa-shield-alt"></i><span>Trusted<br>Service</span></div>
+                    <div class="hero-feature"><i class="fa fa-chart-line"></i><span>Smart<br>Investments</span></div>
+                </div>
+                <!-- HERO-REDESIGN-END -->
             </div>
+
+            <!-- HERO-REDESIGN-START -->
+            <div class="hero-scroll-indicator">
+                <span class="hero-scroll-circle"><i class="fa fa-chevron-down"></i></span>
+                SCROLL DOWN
+            </div>
+            <div class="hero-corner-tagline">Your Dream Home<br>Is Closer Than You Think</div>
+            <!-- HERO-REDESIGN-END -->
 
         </div>
     </section>
     <!-- banner ends -->
 
     <!-- form main starts -->
-    <div class="form-main">
+    <!-- <div class="form-main">
         <div class="container">
             <div class="form-content">
                 <div class="form-navtab text-center">
@@ -283,25 +264,23 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- form main ends -->
 
     <!--About Us Section -->
     <section class="about-us bg-white pb-6 pt-6">
         <div class="container">
 
-            <div class="section-title mb-6 pb-1 w-75 mx-auto text-center">
+            <!-- <div class="section-title mb-6 pb-1 w-75 mx-auto text-center">
                 <h2 class="m-0" style="color: #dbba77;">About <span>Us</span></h2>
                 <p>Prem Jain Homes delivers reliable real estate solutions, combining market
                     expertise with personalized service to turn your property goals into reality.</p>
-            </div>
+            </div> -->
 
             <div class="about-image-box">
                 <div class="row d-flex align-items-center justify-content-between">
                     <div class="col-lg-6 col-sm-12 mb-4">
                         <div class="about-content text-center text-lg-start">
-                            <h4 class="bg-gold black px-4 py-1 d-inline-block" style="background-color: #dbba77;">
-                                Building Facilities</h4>
                             <h2 class="border-b mb-2 pb-2">Don't wait to start living your dream.</h2>
                             <p class="mb-0">Here at Prem Jain Homes, your time is our time, and we can guarantee we
                                 won't waste it.
@@ -326,7 +305,7 @@
     </section>
 
     <!-- Counter -->
-    <section class="counter-main pb-0 pt-0">
+    <!-- <section class="counter-main pb-0 pt-0">
         <div class="container">
             <div class="counter text-center bg-dark p-5 pb-1 border">
                 <div class="row">
@@ -365,7 +344,7 @@
                             <i class="fa fa-support themeicon3 me-4"></i>
                             <div class="counter-content">
                                 <h3 class="value mb-0 text-white">340</h3>
-                                <span class="m-0">Apartio Rooms</span>
+                                <span class="m-0">Apartment Rooms</span>
                             </div>
                         </div>
                     </div>
@@ -373,7 +352,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Counter -->
 
     <!--Team Section -->
@@ -417,7 +396,7 @@
     </section>
 
     <!-- More Featured Property SEction -->
-    <section class="trending bg-white">
+    <!-- <section class="trending bg-white">
         <div class="container">
             <div class="section-title mb-6 pb-1 w-75 mx-auto text-center">
                 <h2 class="m-0" style="color:#dbba77;">More Featured <span style="color:#000;">Property</span></h2>
@@ -436,7 +415,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">House</h5>
-                                        <h4><a href="detail-rightside.html">1244 Vansh Market, Mise Mizkel Australia,
+                                        <h4><a href="all-listing.html">1244 Vansh Market, Mise Mizkel Australia,
                                                 AU456HA</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -473,7 +452,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">Villa</h5>
-                                        <h4><a href="detail-rightside.html">425 Vine 012 Street, Montreal Canada,
+                                        <h4><a href="all-listing.html">425 Vine 012 Street, Montreal Canada,
                                                 UHW45Q</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -510,7 +489,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">House</h5>
-                                        <h4><a href="detail-rightside.html">7012 Shine Sehu Street, Liverpool London,
+                                        <h4><a href="all-listing.html">7012 Shine Sehu Street, Liverpool London,
                                                 LC345AC</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -547,7 +526,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">Villa</h5>
-                                        <h4><a href="detail-rightside.html">425 Vine 012 Street, Montreal Canada,
+                                        <h4><a href="all-listing.html">425 Vine 012 Street, Montreal Canada,
                                                 UHW45Q</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -584,7 +563,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">Flat</h5>
-                                        <h4><a href="detail-rightside.html">1244 Vansh Market, Mise Mizkel Australia,
+                                        <h4><a href="all-listing.html">1244 Vansh Market, Mise Mizkel Australia,
                                                 AU456HA</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -621,7 +600,7 @@
                                 <div class="col-lg-8 col-md-8">
                                     <div class="trend-content">
                                         <h5 class="themeicon3">Villa</h5>
-                                        <h4><a href="detail-rightside.html">425 Vine 012 Street, Montreal Canada,
+                                        <h4><a href="all-listing.html">425 Vine 012 Street, Montreal Canada,
                                                 UHW45Q</a></h4>
                                         <div class="entry-meta d-flex align-items-center justify-content-between pb-1">
                                             <div class="entry-author">
@@ -648,16 +627,16 @@
                     </div>
 
                     <div class="col-lg-12 text-center">
-                        <a href="listing-leftfilter.html" class="nir-btn">Load More</a>
+                        <a href="all-listing.html" class="nir-btn">Load More</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Trending Ends -->
 
     <!-- Areas We Service starts -->
-    <section class="trending-topic pb-6">
+    <!-- <section class="trending-topic pb-6">
         <div class="container">
             <div class="section-title mb-6 pb-1 w-75 mx-auto text-center">
                 <h2 class="m-0" style="color:#dbba77;">Find Properties in <span style="color:#000;">Popular
@@ -673,7 +652,7 @@
                             </div>
                             <div class="trending-topic-title p-3 bg-white w-100 d-inline-block">
                                 <h5 class="mb-1">
-                                    <a href="grid-leftfilter.html">California, USA</a>
+                                    <a href="all-listing.html">California, USA</a>
                                 </h5>
                                 <p class="mb-0">48 Properties</p>
                             </div>
@@ -686,7 +665,7 @@
                             </div>
                             <div class="trending-topic-title p-3 bg-white w-100 d-inline-block">
                                 <h5 class="mb-1">
-                                    <a href="grid-leftfilter.html">Norwich, England</a>
+                                    <a href="all-listing.html">Norwich, England</a>
                                 </h5>
                                 <p class="mb-0">54 Properties</p>
                             </div>
@@ -699,7 +678,7 @@
                             </div>
                             <div class="trending-topic-title p-3 bg-white w-100 d-inline-block">
                                 <h5 class="mb-1">
-                                    <a href="grid-leftfilter.html">Miami, USA</a>
+                                    <a href="all-listing.html">Miami, USA</a>
                                 </h5>
                                 <p class="mb-0">42 Properties</p>
                             </div>
@@ -712,7 +691,7 @@
                             </div>
                             <div class="trending-topic-title p-3 bg-white w-100 d-inline-block">
                                 <h5 class="mb-1">
-                                    <a href="grid-leftfilter.html">Tokya, Japan</a>
+                                    <a href="all-listing.html">Tokya, Japan</a>
                                 </h5>
                                 <p class="mb-0">26 Properties</p>
                             </div>
@@ -725,7 +704,7 @@
                             </div>
                             <div class="trending-topic-title p-3 bg-white w-100 d-inline-block">
                                 <h5 class="mb-1">
-                                    <a href="grid-leftfilter.html">Kathmandu, Nepal</a>
+                                    <a href="all-listing.html">Kathmandu, Nepal</a>
                                 </h5>
                                 <p class="mb-0">18 Properties</p>
                             </div>
@@ -734,7 +713,125 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+  <section class="trending-topic pb-6">
+    <div class="container-fluid p-0">
+        <!-- Section Title -->
+        <div class="section-title mb-5 pb-1 w-75 mx-auto text-center">
+            <h2 class="m-0" style="color:#000;">Areas <span style="color:#dbba77;">we service</span></h2>
+            <p class="mt-2 text-muted">Discover listings and statistics in Southern Ontario's most sought-after locations.</p>
+        </div>
+
+        <!-- Slider / Grid Container -->
+        <div class="trending-topic-main">
+            <div class="row shop-slider g-0 m-0">
+                
+                <!-- Card 1: Simcoe Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/Simcoe.avif" alt="Simcoe Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">SIMCOE REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2: Mississauga -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/Mississauga.avif" alt="Mississauga" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">MISSISSAUGA</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3: Halton Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/Halton region.avif" alt="Halton Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">HALTON REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4: Toronto -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/Toronto.webp" alt="Toronto" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">TORONTO</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5: Brampton -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/brampton-.jfif" alt="Brampton" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">BRAMPTON</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6: Hamilton Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/hamilton region.avif" alt="Hamilton Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">HAMILTON REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 7: Niagara Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/Naigara.avif" alt="Niagara Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">NIAGARA REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 8: York Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/york.avif" alt="York Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">YORK REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 9: Durham Region -->
+                <div class="col-lg-2-4 col-md-4 col-sm-6 p-0">
+                    <a href="all-listing.html" class="area-service-card d-block position-relative overflow-hidden text-decoration-none">
+                        <img src="images/destination/durham.jfif" alt="Durham Region" class="w-100 d-block area-img">
+                        <div class="area-overlay d-flex align-items-end justify-content-center pb-4">
+                            <h4 class="text-white fw-bold text-uppercase tracking-wide m-0">DURHAM REGION</h4>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Controls & Center Button -->
+            <div class="slider-bottom-controls d-flex align-items-center justify-content-center gap-4 mt-4 pt-2">
+                <button class="slick-prev-custom border-0 bg-transparent text-muted fs-4" type="button">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <a href="all-listing.html" class="btn btn-red px-4 py-2 text-uppercase fw-semibold rounded-pill">VIEW COMMUNITIES</a>
+                <button class="slick-next-custom border-0 bg-transparent text-muted fs-4" type="button">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+  
     <!-- trending-topic ends -->
 
     <!-- Why Choose us Cards starts -->
@@ -757,7 +854,7 @@
                                     <i class="flaticon-call themeicon3"></i>
                                 </div>
                                 <div class="why-us-content">
-                                    <h4><a href="services-detail.html">Trusted By Thousands</a></h4>
+                                    <h4><a href="about.html">Trusted By Thousands</a></h4>
                                     <p class="mb-0">We have built long-lasting relationships with our clients through
                                         honesty, reliability, and successful property deals.</p>
                                 </div>
@@ -769,7 +866,7 @@
                                     <i class="flaticon-global themeicon3"></i>
                                 </div>
                                 <div class="why-us-content">
-                                    <h4><a href="services-detail.html">Wide Renge Properties</a></h4>
+                                    <h4><a href="about.html">Wide Range Properties</a></h4>
                                     <p class="mb-0">Explore a diverse portfolio of residential and commercial properties
                                         tailored to suit every need and budget.</p>
                                 </div>
@@ -781,7 +878,7 @@
                                     <i class="flaticon-building themeicon3"></i>
                                 </div>
                                 <div class="why-us-content">
-                                    <h4><a href="services-detail.html">Financing Made Easy</a></h4>
+                                    <h4><a href="about.html">Financing Made Easy</a></h4>
                                     <p class="mb-0">We assist you with flexible financing options and expert guidance to
                                         make your property purchase simple and stress-free.</p>
                                 </div>
@@ -794,7 +891,7 @@
                                     <i class="flaticon-location-pin themeicon3"></i>
                                 </div>
                                 <div class="why-us-content">
-                                    <h4><a href="services-detail.html">We are here near you</a></h4>
+                                    <h4><a href="about.html">We are here near you</a></h4>
                                     <p class="mb-0">Our local expertise and dedicated support team ensure you get the
                                         best opportunities in your preferred location.</p>
                                 </div>
@@ -820,9 +917,9 @@
                                     <h5 class="mb-1 white">Wanna to Sell Or Rent??</h5>
                                     <h2 class="mb-4 white">Looking to Buy a New Property or Sell an Existing One?</h2>
                                     <div class="section-btns d-flex align-items-center">
-                                        <a href="grid-leftfilter.html" class="nir-btn me-4">Rent Properties <i
+                                        <a href="all-listing.html" class="nir-btn me-4">Rent Properties <i
                                                 class="fa fa-arrow-right white pl-1"></i></a>
-                                        <a href="grid-rightfilter.html" class="nir-btn">Buy Properties <i
+                                        <a href="all-listing.html" class="nir-btn">Buy Properties <i
                                                 class="fa fa-arrow-right white pl-1"></i></a>
                                     </div>
                                 </div>
@@ -901,7 +998,7 @@
                             </div>
                             <div class="team-content text-center bg-white p-3">
                                 <h4 class="mb-0">Cacics Coold</h4>
-                                <p class="mb-0">Asst. Chef</p>
+                                <p class="mb-0">Property Consultant</p>
                             </div>
                         </div>
                     </div>
@@ -912,67 +1009,129 @@
     <!-- our teams Ends -->
 
     <!-- testomonial start -->
-    <section class="testimonial pb-6 pt-9" style="background-image: url(images/testimonial.png);">
-        <div class="container">
-            <div class="section-title mb-4 pb-1 w-75 mx-auto text-center">
-                <h2 class="m-0">Good Reviews By <span>Clients</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="row review-slider">
-                <div class="col-sm-4 item">
-                    <div class="testimonial-item1 text-center">
-                        <div class="details">
-                            <p class="m-0">Lorem Ipsum is simply dummy text of the printing andypesetting industry.
-                                Lorem ipsum a simple Lorem Ipsum has been the industry's standard dummy hic et quidem.
-                                Dignissimos maxime velit unde inventore quasi vero dolorem.</p>
-                        </div>
-                        <div class="author-info mt-2">
-                            <a href="#"><img src="images/testimonial/img1.jpg" alt=""></a>
-                            <div class="author-title">
-                                <h4 class="m-0 theme2">Jared Erondu</h4>
-                                <span>Supervisor</span>
-                            </div>
-                        </div>
-                        <i class="fa fa-quote-left mb-2"></i>
-                    </div>
-                </div>
-                <div class="col-sm-4 item">
-                    <div class="testimonial-item1 text-center">
-                        <div class="details">
-                            <p class="m-0">Lorem Ipsum is simply dummy text of the printing andypesetting industry.
-                                Lorem ipsum a simple Lorem Ipsum has been the industry's standard dummy hic et quidem.
-                                Dignissimos maxime velit unde inventore quasi vero dolorem.</p>
-                        </div>
-                        <div class="author-info mt-2">
-                            <a href="#"><img src="images/testimonial/img2.jpg" alt=""></a>
-                            <div class="author-title">
-                                <h4 class="m-0 theme2">Cadic Vegeta</h4>
-                                <span>Sr. Consultant</span>
-                            </div>
-                        </div>
-                        <i class="fa fa-quote-left mb-2"></i>
-                    </div>
-                </div>
-                <div class="col-sm-4 item">
-                    <div class="testimonial-item1 text-center">
-                        <div class="details">
-                            <p class="m-0">Lorem Ipsum is simply dummy text of the printing andypesetting industry.
-                                Lorem ipsum a simple Lorem Ipsum has been the industry's standard dummy hic et quidem.
-                                Dignissimos maxime velit unde inventore quasi vero dolorem.</p>
-                        </div>
-                        <div class="author-info mt-2">
-                            <a href="#"><img src="images/testimonial/img3.jpg" alt=""></a>
-                            <div class="author-title">
-                                <h4 class="m-0 theme2">Jonathan Beri</h4>
-                                <span>Sales Manager</span>
-                            </div>
-                        </div>
-                        <i class="fa fa-quote-left mb-2"></i>
-                    </div>
-                </div>
-            </div>
+  
+<section class="testimonial py-5 position-relative overflow-hidden" style="background: #f8f9fa url(images/testimonial.png) no-repeat center center / cover;">
+    <div class="container py-4 position-relative" style="z-index: 2;">
+        
+        <!-- Section Title -->
+        <div class="section-title mb-5 text-center col-lg-7 mx-auto">
+            <span class="text-uppercase fw-bold small tracking-wider mb-2 d-block" style="color:#dbba77;">Client Stories</span>
+            <h2 class="fw-bold display-6 mb-3 text-dark">Client <span style="color:#dbba77;">Testimonials</span></h2>
+            <div class="title-line mx-auto mb-3" style="background-color:#dbba77; width: 50px; height: 3px; border-radius: 2px;"></div>
+            <p class="text-secondary fs-6 m-0">Hear directly from homeowners and investors who found their ideal property with us.</p>
         </div>
-    </section>
+
+        <div class="row review-slider">
+            
+            <!-- Review 1 -->
+            <div class="col-lg-4 col-md-6 item p-2">
+                <div class="testimonial-card bg-white rounded-4 p-4 p-lg-5 position-relative h-100 d-flex flex-column justify-content-between shadow-sm border-0">
+                    <!-- Top Quote Design -->
+                    <div class="card-quote-icon position-absolute top-0 end-0 me-4 mt-3 opacity-10">
+                        <i class="fa fa-quote-right display-4" style="color:#dbba77;"></i>
+                    </div>
+
+                    <!-- Review Text -->
+                    <div class="review-body position-relative mb-4">
+                        <div class="stars-wrap mb-3 text-warning fs-6">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic lh-base m-0 fs-6">
+                            "Finding our dream home in Mississauga was completely seamless. The team guided us through market statistics, negotiated a great price, and handled all paperwork effortlessly."
+                        </p>
+                    </div>
+
+                    <!-- Author Details Container -->
+                    <div class="author-details d-flex align-items-center pt-3 border-top border-light">
+                        <div class="avatar-box flex-shrink-0 me-3">
+                            <img src="images/testimonial/img1.jpg" alt="David Miller" class="rounded-circle object-fit-cover shadow-sm" style="width: 55px; height: 55px; border: 2px solid #dbba77;">
+                        </div>
+                        <div class="author-text">
+                            <h5 class="fw-bold mb-0 text-dark fs-6">David Miller</h5>
+                            <span class="text-muted small">Homebuyer, Mississauga</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="col-lg-4 col-md-6 item p-2">
+                <div class="testimonial-card bg-white rounded-4 p-4 p-lg-5 position-relative h-100 d-flex flex-column justify-content-between shadow-sm border-0">
+                    <!-- Top Quote Design -->
+                    <div class="card-quote-icon position-absolute top-0 end-0 me-4 mt-3 opacity-10">
+                        <i class="fa fa-quote-right display-4" style="color:#dbba77;"></i>
+                    </div>
+
+                    <!-- Review Text -->
+                    <div class="review-body position-relative mb-4">
+                        <div class="stars-wrap mb-3 text-warning fs-6">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic lh-base m-0 fs-6">
+                            "As a real estate investor in the GTA, accurate market insight is crucial. Their team helped me secure two high-yield pre-construction condo units in Downtown Toronto."
+                        </p>
+                    </div>
+
+                    <!-- Author Details Container -->
+                    <div class="author-details d-flex align-items-center pt-3 border-top border-light">
+                        <div class="avatar-box flex-shrink-0 me-3">
+                            <img src="images/testimonial/img2.jpg" alt="Marcus Chen" class="rounded-circle object-fit-cover shadow-sm" style="width: 55px; height: 55px; border: 2px solid #dbba77;">
+                        </div>
+                        <div class="author-text">
+                            <h5 class="fw-bold mb-0 text-dark fs-6">Marcus Chen</h5>
+                            <span class="text-muted small">Property Investor, Toronto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="col-lg-4 col-md-6 item p-2">
+                <div class="testimonial-card bg-white rounded-4 p-4 p-lg-5 position-relative h-100 d-flex flex-column justify-content-between shadow-sm border-0">
+                    <!-- Top Quote Design -->
+                    <div class="card-quote-icon position-absolute top-0 end-0 me-4 mt-3 opacity-10">
+                        <i class="fa fa-quote-right display-4" style="color:#dbba77;"></i>
+                    </div>
+
+                    <!-- Review Text -->
+                    <div class="review-body position-relative mb-4">
+                        <div class="stars-wrap mb-3 text-warning fs-6">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic lh-base m-0 fs-6">
+                            "We sold our detached property in Oakville above the asking price within just 5 days of listing. Outstanding marketing strategies and professional staging advice!"
+                        </p>
+                    </div>
+
+                    <!-- Author Details Container -->
+                    <div class="author-details d-flex align-items-center pt-3 border-top border-light">
+                        <div class="avatar-box flex-shrink-0 me-3">
+                            <img src="images/testimonial/img3.jpg" alt="Emily Watson" class="rounded-circle object-fit-cover shadow-sm" style="width: 55px; height: 55px; border: 2px solid #dbba77;">
+                        </div>
+                        <div class="author-text">
+                            <h5 class="fw-bold mb-0 text-dark fs-6">Emily Watson</h5>
+                            <span class="text-muted small">Seller, Halton Region</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
     <!-- testimonial ends -->
 
     <!-- top deal starts -->
@@ -980,7 +1139,7 @@
         <div class="container">
             <div class="section-title mb-4 pb-1 w-75 mx-auto text-center">
                 <h2 class="m-0">Recent Articles & <span>Posts</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Tips, market insight, and guides from the Prem Jain Homes team.</p>
             </div>
             <div class="recent-articles-inner">
                 <div class="row">
@@ -991,24 +1150,17 @@
                             </div>
                             <div class="trend-content-main pt-3">
                                 <div class="trend-content">
-                                    <h5 class="theme">Technology</h5>
-                                    <h4><a href="detail-1.html">How a developer and designer duo at Deutsche Bank keep
-                                            remote alive.</a></h4>
+                                    <h5 class="theme">Buying</h5>
+                                    <h4><a href="blogs.html">5 Things To Check Before You Make An Offer On A
+                                            Home.</a></h4>
                                     <p class="mb-3">
-                                        A wonderful serenity has taken possession of my entire soul, like these sweet
-                                        mornings of spring which I enjoy.
+                                        A quick checklist we walk every buyer through before submitting an offer,
+                                        so there are no surprises at closing.
                                     </p>
                                     <div class="entry-meta d-flex align-items-center justify-content-between">
                                         <div class="entry-author">
                                             <img src="images/reviewer/2.jpg" alt="" class="rounded-circle me-1">
-                                            <span>Sollmond Nell</span>
-                                        </div>
-                                        <div class="entry-metalist d-flex align-items-center">
-                                            <ul>
-                                                <li class="me-2"><i class="fa fa-eye"></i> 5k</li>
-                                                <li class="me-2"><i class="fa fa-heart"></i> 5k</li>
-                                                <li><i class="fa fa-comments"></i> 5k</li>
-                                            </ul>
+                                            <span>Prem Jain Homes Team</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1023,24 +1175,17 @@
                             </div>
                             <div class="trend-content-main pt-3">
                                 <div class="trend-content">
-                                    <h5 class="theme">Inspiration</h5>
-                                    <h4><a href="detail-1.html">Inspire Runner with Autism Graces the Latest Cover of
-                                            Women's Running</a></h4>
+                                    <h5 class="theme">Financing</h5>
+                                    <h4><a href="blogs.html">Mortgage Pre-Approval: What You Need To Get
+                                            Started.</a></h4>
                                     <p class="mb-3">
-                                        A wonderful serenity has taken possession of my entire soul, like these sweet
-                                        mornings of spring which I enjoy.
+                                        A breakdown of the documents and steps involved in getting pre-approved
+                                        before you start touring homes.
                                     </p>
                                     <div class="entry-meta d-flex align-items-center justify-content-between">
                                         <div class="entry-author">
                                             <img src="images/reviewer/1.jpg" alt="" class="rounded-circle me-1">
-                                            <span>David Scott</span>
-                                        </div>
-                                        <div class="entry-metalist d-flex align-items-center">
-                                            <ul>
-                                                <li class="me-2"><i class="fa fa-eye"></i> 5k</li>
-                                                <li class="me-2"><i class="fa fa-heart"></i> 5k</li>
-                                                <li><i class="fa fa-comments"></i> 5k</li>
-                                            </ul>
+                                            <span>Prem Jain Homes Team</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1055,24 +1200,17 @@
                             </div>
                             <div class="trend-content-main pt-3">
                                 <div class="trend-content">
-                                    <h5 class="theme">Public</h5>
-                                    <h4><a href="detail-1.html">We Provide Services To Grow Your Business More Sell
-                                            Affiliate Products.</a></h4>
+                                    <h5 class="theme">Selling</h5>
+                                    <h4><a href="blogs.html">Staging Tips That Help Your Home Sell
+                                            Faster.</a></h4>
                                     <p class="mb-3">
-                                        A wonderful serenity has taken possession of my entire soul, like these sweet
-                                        mornings of spring which I enjoy.
+                                        Simple, low-cost staging changes that consistently help our listings
+                                        stand out and sell above asking.
                                     </p>
                                     <div class="entry-meta d-flex align-items-center justify-content-between">
                                         <div class="entry-author">
                                             <img src="images/reviewer/3.jpg" alt="" class="rounded-circle me-1">
-                                            <span>John Bolden</span>
-                                        </div>
-                                        <div class="entry-metalist d-flex align-items-center">
-                                            <ul>
-                                                <li class="me-2"><i class="fa fa-eye"></i> 5k</li>
-                                                <li class="me-2"><i class="fa fa-heart"></i> 5k</li>
-                                                <li><i class="fa fa-comments"></i> 5k</li>
-                                            </ul>
+                                            <span>Prem Jain Homes Team</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1123,7 +1261,7 @@
                                 and invest in the perfect property with confidence.
                             </p>
                             <ul>
-                                <li class="white"><i class="fas fa-phone-alt themeicon3"></i> +47-252-254-2542</li>
+                                <li class="white"><i class="fas fa-phone-alt themeicon3"></i> (647) 781-9338</li>
                                 <li class="white"><i class="fas fa-envelope themeicon3"></i>
                                     Premjainhomesoffice@gmail.com</li>
                                 <li class="white">
@@ -1137,12 +1275,11 @@
                         <div class="footer-links">
                             <h3 class="white">Quick link</h3>
                             <ul>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="about-us.html">Delivery Information</a></li>
-                                <li><a href="about-us.html">Privacy Policy</a></li>
-                                <li><a href="about-us.html">Terms &amp; Conditions</a></li>
-                                <li><a href="about-us.html">Customer Service</a></li>
-                                <li><a href="about-us.html">Return Policy</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="buyers-guide.html">Buyer's Guide</a></li>
+                                <li><a href="all-listing.html">Listings</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="blogs.html">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1150,14 +1287,14 @@
                         <div class="footer-links">
                             <h3 class="white">Popular Tags</h3>
                             <div class="tagcloud">
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Beautiful</a>
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Public</a>
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Technology</a>
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Travel</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Beautiful</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Public</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Technology</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Travel</a>
                                 <a class="tag-cloud-link bg-white black p-2 mb-1"
-                                    href="post-grid-1.html">Entertainment</a>
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Blog</a>
-                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="post-grid-1.html">Sports </a>
+                                    href="blogs.html">Entertainment</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Blog</a>
+                                <a class="tag-cloud-link bg-white black p-2 mb-1" href="blogs.html">Sports </a>
                             </div>
                         </div>
                     </div> -->
@@ -1171,12 +1308,12 @@
                                     </div>
                                     <div class="trend-content-main w-75">
                                         <div class="trend-content">
-                                            <h5 class="mb-1"><a href="detail-1.html">3 Easy Ways To Make Your iPhone
-                                                    Faster</a></h5>
+                                            <h5 class="mb-1"><a href="blogs.html">5 Things To Check Before You Make An Offer On A
+                                                    Home</a></h5>
                                             <div class="entry-meta">
                                                 <div class="entry-metalist d-flex align-items-center">
-                                                    <small><a href="post-grid-1.html" class="white"><i
-                                                                class="fa fa-calendar"></i> 22 Mar 2021</a></small>
+                                                    <small><a href="blogs.html" class="white"><i
+                                                                class="fa fa-calendar"></i> 2026</a></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1189,12 +1326,12 @@
                                     </div>
                                     <div class="trend-content-main w-75">
                                         <div class="trend-content">
-                                            <h5 class="mb-1"><a href="detail-1.html">Facts About Business That Will Help
-                                                    You Success</a></h5>
+                                            <h5 class="mb-1"><a href="blogs.html">Mortgage Pre-Approval: What You Need To Get
+                                                    Started</a></h5>
                                             <div class="entry-meta">
                                                 <div class="entry-metalist d-flex align-items-center">
-                                                    <small><a href="post-grid-1.html" class="white"><i
-                                                                class="fa fa-calendar"></i> 22 Mar 2021</a></small>
+                                                    <small><a href="blogs.html" class="white"><i
+                                                                class="fa fa-calendar"></i> 2026</a></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1207,12 +1344,12 @@
                                     </div>
                                     <div class="trend-content-main w-75">
                                         <div class="trend-content">
-                                            <h5 class="mb-1"><a href="detail-1.html">Your Light Is About To Stop Being
-                                                    Relevant</a></h5>
+                                            <h5 class="mb-1"><a href="blogs.html">Staging Tips That Help Your Home Sell
+                                                    Faster</a></h5>
                                             <div class="entry-meta">
                                                 <div class="entry-metalist d-flex align-items-center">
-                                                    <small><a href="post-grid-1.html" class="white"><i
-                                                                class="fa fa-calendar"></i> 22 Mar 2021</a></small>
+                                                    <small><a href="blogs.html" class="white"><i
+                                                                class="fa fa-calendar"></i> 2026</a></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1238,8 +1375,7 @@
                                 class="fab fa-facebook-f"></i></a>
                         <a href="https://www.youtube.com/channel/UCQTUnbo5fzROyD5jlf4-PwA" target="_blank"><i
                                 class="fab fa-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@premjainhomes" target="_blank"><i
-                                class="fab fa-tiktok"></i></a>
+                        <a href="https://www.tiktok.com/@premjainhomes" target="_blank"><svg class="tiktok-svg-icon" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.125em;"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
                         <a href="https://www.linkedin.com/in/prem-jain-472206265/?_l=en_US" target="_blank"><i
                                 class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -1405,18 +1541,16 @@
 
                         <div class="content-box mb-5">
                             <h3 class="">Get In Touch</h3>
-                            <p class="mb-2">We must explain to you how all seds this mistakens idea off denouncing
-                                pleasures and praising pain was born and I will give you a completed accounts..</p>
+                            <p class="mb-2">Have a real estate question? Reach out and our team will get back to you within 24 hours.</p>
                             <a href="#" class="nir-btn">Consultation</a>
                         </div>
 
                         <div class="contact-info1">
                             <h3 class="">Contact Info</h3>
                             <ul>
-                                <li class="d-block mb-1"><i class="fa fa-map-marker-alt me-2"></i> Brozon Mall 26,
-                                    Newyrok NY 10005</li>
-                                <li class="d-block mb-1"><i class="fa fa-phone-alt me-2"></i>555 626-0234</li>
-                                <li class="d-block mb-1"><i class="fa fa-envelope-open me-2"></i>support@realshield.com
+                                <li class="d-block mb-1"><i class="fa fa-map-marker-alt me-2"></i> 2654 Boardfish Road</li>
+                                <li class="d-block mb-1"><i class="fa fa-phone-alt me-2"></i>(647) 781-9338</li>
+                                <li class="d-block mb-1"><i class="fa fa-envelope-open me-2"></i>premjainhomesoffice@gmail.com
                                 </li>
                                 <li class="d-block"><i class="fa fa-clock me-2"></i> Open Time: 09.00 to 18.00</li>
                             </ul>
