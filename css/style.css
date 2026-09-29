@@ -230,7 +230,7 @@ img {
 
 /* Center Button Styling */
 .btn-red {
-    background-color: #e31b23;
+    background-color: #dbba77;
     color: #fff;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
@@ -238,7 +238,7 @@ img {
 }
 
 .btn-red:hover {
-    background-color: #c41219;
+    background-color: #c9a25c;
     color: #fff;
 }
 
@@ -320,7 +320,7 @@ img {
 .testimonial-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
-    border-top: 4px solid #e31b23 !important;
+    border-top: 4px solid #dbba77 !important;
 }
 
 .stars-wrap i {
@@ -902,7 +902,7 @@ button {
   .nir-btn:hover, .nir-btn-black:hover {
     background: #dbba77;
     transition: all ease-in-out 0.5s;
-    color: #fff; }
+    color: #0a1c1f; }
 
 /* Social Icons of Footer Code */
 .social-icons {
@@ -5965,12 +5965,56 @@ html {
 }
 
 /* The fixed #back-to-top button (bottom:20px, right:20px, 40x40) sits on top
-   of the last footer social icon on narrow screens since it's the last thing
-   in normal document flow at that corner. Give the row breathing room. */
-@media (max-width: 767px) {
-  .footer-copyright .social-icons {
-    padding-right: 55px;
-  }
+   of the last footer social icon at every width, since the icon row is the
+   last thing in normal document flow at that corner. Give it breathing room. */
+.footer-copyright .social-icons {
+  padding-right: 55px;
+}
+
+/* White text on the brand gold (#dbba77) is low-contrast and hard to read
+   (light warm gold vs white fails WCAG AA). This template used that
+   combination in ~30 places (buttons, pagination, tabs, sliders, sidebar
+   states, footer, etc). Switching all of them to the site's dark navy
+   (#0a1c1f, already used for text-on-gold elsewhere e.g. the hero CTA) for
+   readability, without touching the gold backgrounds themselves. */
+.btn-red,
+blockquote,
+.pagination-main .pagination li a:hover,
+.pagination-main .pagination li a:focus,
+.pagination-main .pagination li.active a,
+input#submit:hover,
+.team-slider .slick-prev:hover,
+.team-slider .slick-prev:focus,
+.team-slider .slick-next:hover,
+.team-slider .slick-next:focus,
+.header_menu .navbar.navbar-default .nav.navbar-nav li.submenu .dropdown-menu li a:hover,
+#search1 .close,
+.menu-ham a i:hover,
+.modal__container .modal__content button.close,
+.banner .swiper-button-next:after,
+.banner .swiper-button-prev:after,
+.banner .swiper-button-next:hover:after,
+.banner .swiper-button-prev:hover:after,
+.tabs-navbar ul li a:hover,
+.tabs-navbar ul li.active a,
+.tabs-navbar1 ul li a:hover,
+.tabs-navbar1 ul li.active a,
+.testimonial .testimonial-item .testimonial-content .testimonial-icon,
+.contact-main .contact-info .info-item .info-icon i,
+.error .newsletter-form form input.nir-btn:hover,
+footer .footer-upper .footer-links input.nir-btn:hover,
+.social-links ul li a:hover,
+footer.footer1 .footer-upper .footer-links input.nir-btn:hover,
+footer.footer1 .footer-copyright .social-links ul li a,
+footer.footer1 .footer-copyright .social-links ul li a:hover,
+ul.sidebar-category li a:hover,
+ul.sidebar-category li.active a,
+.sidebar-tabs .nav-tabs > li button:hover,
+.sidebar-tabs .nav-tabs > li button.active,
+.sidebar-tabs .nav-tabs > li button.active:hover,
+ul.sidebar-tags li a:hover,
+.main-slider-1 .main-slider-inner .form-content .search-tabs li.active i {
+  color: #0a1c1f !important;
 }
 
 /*# sourceMappingURL=style.css.map */
